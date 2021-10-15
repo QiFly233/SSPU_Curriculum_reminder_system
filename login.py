@@ -61,7 +61,6 @@ class Login:
         for i in range(len(num)):
             self.semester_num[num[i][1]+num[i][2]+'学期'] = num[i][0]
 
-
     def course_table(self):
         url = 'https://jx.sspu.edu.cn/eams/courseTableForStd.action'
         log = self.req_session.get(url)
@@ -81,6 +80,7 @@ class Login:
 
     def logout(self):
         self.req_session.cookies.clear()
+
 
 login = Login()
 login.login()
