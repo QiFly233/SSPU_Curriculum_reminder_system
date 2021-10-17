@@ -1,7 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from config import config
-
+from courses import courses
 
 class Email:
     def __init__(self):
@@ -13,7 +13,8 @@ class Email:
         self.name = config.get('email', 'name')
 
     def message(self):
-        msg = 'test'
+        msg = courses.handle()
+        print(msg)
         self.msg = MIMEText(msg, 'plain', 'utf-8')
         self.msg['From'] = self.sender
         self.msg['To'] = self.receiver[0]
@@ -28,4 +29,4 @@ class Email:
         print("成功")
 
 
-emails = Email()
+emails = Email().message()

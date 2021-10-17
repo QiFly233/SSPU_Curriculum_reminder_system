@@ -1,9 +1,13 @@
 import re
+from login import login
 
 
 class Courses:
-    def handle(self, log):
-        log = log.split('activity = new TaskActivity(')
+    def __init__(self):
+        self.log = login.login_course()
+
+    def handle(self):
+        log = self.log.split('activity = new TaskActivity(')
         course_dict = {}
         course_list = []
         for i in range(1, len(log)):
@@ -19,4 +23,4 @@ class Courses:
             course_list.append(course_dict)
         return course_list
 
-course = Courses()
+courses = Courses()

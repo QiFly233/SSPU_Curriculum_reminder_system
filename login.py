@@ -22,14 +22,14 @@ class Login:
         }
         print(self.data)
 
-    def login(self):
+    def login_course(self):
         print("正在登录...")
         self.post_url()
         if self.success():
             print("登录成功")
             self.login_eams()
             self.course_num()
-            self.course_table()
+            return self.course_table()
         else:
             print("登录失败")
         self.logout()
@@ -76,11 +76,11 @@ class Login:
         print(data)
         url = 'https://jx.sspu.edu.cn/eams/courseTableForStd!courseTable.action'
         log = self.req_session.post(url=url, data=data, headers=self.headers)
-        print(log.text)
+        return log.text
 
     def logout(self):
         self.req_session.cookies.clear()
 
 
 login = Login()
-login.login()
+# login.login()
