@@ -55,11 +55,10 @@ class Login:
         url = 'https://jx.sspu.edu.cn/eams/dataQuery.action'
         log = self.req_session.post(url=url, data={'dataType': 'semesterCalendar'})
         num = re.findall('id:(.*?),schoolYear:"(.*?)",name:"(.*?)"', log.text)
-        self.current_semester_num = num[len(num)-1][0]
-        print(self.current_semester_num)
         self.semester_num = {}
         for i in range(len(num)):
             self.semester_num[num[i][1]+num[i][2]+'学期'] = num[i][0]
+        self.current_semester_num = self.semester_num['2021-2022秋季学期']
 
     def course_table(self):
         url = 'https://jx.sspu.edu.cn/eams/courseTableForStd.action'
@@ -76,6 +75,7 @@ class Login:
         print(data)
         url = 'https://jx.sspu.edu.cn/eams/courseTableForStd!courseTable.action'
         log = self.req_session.post(url=url, data=data, headers=self.headers)
+        print(log.text)
         return log.text
 
     def logout(self):

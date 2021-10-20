@@ -24,5 +24,5 @@ class Timer:
         return last_hour
 
     def get_now_second(self):
-        print(self.now_second)
+        return self.now_second()
 
