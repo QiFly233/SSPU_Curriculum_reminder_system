@@ -25,8 +25,20 @@ class Courses:
                 '节次': time
             }
             course_list.append(course_dict)
+            course_detail_dict = {
+                time:
+                    {
+                        '教师': course_info[0][0],
+                        '学科名称': course_info[0][1],
+                        '教室': course_info[0][2],
+                    }
+            }
+            print(course_detail_dict)
+            if not course_time[0][0] in course_query_list:
+                course_query_list[course_time[0][0]] = []
+            course_query_list[course_time[0][0]].append(course_detail_dict)
 
-        print(course_list)
+        print(course_query_list)
         return course_list
 
 

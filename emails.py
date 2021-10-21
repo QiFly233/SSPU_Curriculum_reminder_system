@@ -14,7 +14,7 @@ class Email:
 
     def message(self):
         msg = courses.handle()
-        print(msg)
+        # print(msg)
         self.msg = MIMEText(msg, 'plain', 'utf-8')
         self.msg['From'] = self.sender
         self.msg['To'] = self.receiver[0]
