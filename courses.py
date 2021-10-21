@@ -5,7 +5,6 @@ from login import login
 class Courses:
     def __init__(self):
         self.log = login.login_course()
-        print(self.log)
 
     def handle(self):
         log = self.log.split('activity = new TaskActivity(')
@@ -33,13 +32,11 @@ class Courses:
                         '教室': course_info[0][2],
                     }
             }
-            print(course_detail_dict)
             if not course_time[0][0] in course_query_list:
                 course_query_list[course_time[0][0]] = []
             course_query_list[course_time[0][0]].append(course_detail_dict)
 
-        print(course_query_list)
-        return course_list
+        return course_query_list
 
 
 courses = Courses()
