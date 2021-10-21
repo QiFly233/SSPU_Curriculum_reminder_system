@@ -1,5 +1,6 @@
 import re
 from login import login
+from config import config
 
 
 class Courses:
@@ -24,18 +25,20 @@ class Courses:
                 '节次': time
             }
             course_list.append(course_dict)
+            hour = config.get("course", str(int(course_time[0][1]) + 1)).split('-')
             course_detail_dict = {
-                time:
+                hour[0]:
                     {
                         '教师': course_info[0][0],
                         '学科名称': course_info[0][1],
                         '教室': course_info[0][2],
+                        '节次': time
                     }
             }
             if not course_time[0][0] in course_query_list:
                 course_query_list[course_time[0][0]] = []
             course_query_list[course_time[0][0]].append(course_detail_dict)
-
+        print(course_query_list)
         return course_query_list
 
 
