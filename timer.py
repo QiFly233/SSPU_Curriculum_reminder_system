@@ -2,27 +2,50 @@ import time
 
 
 class Timer:
-    def __init__(self):
-        now_time = time.localtime()
-        self.now_week = now_time.tm_wday
-        self.now_hour = now_time.tm_hour
-        self.now_min = now_time.tm_min
-        self.now_second = now_time.tm_sec
-
     def get_week(self):
-        return self.now_week
+        now_time = time.localtime()
+        now_week = now_time.tm_wday
+        return now_week
 
     def get_now_hour(self):
-        return self.now_hour
+        now_time = time.localtime()
+        now_hour = now_time.tm_hour
+        return now_hour
 
-    def get_last_hour(self):
-        last_hour = self.now_hour
-        if last_hour == 0:
-            last_hour = 23
+    def get_next_hour(self):
+        now_time = time.localtime()
+        last_hour = now_time.tm_hour
+        if last_hour == 23:
+            last_hour = 0
         else:
-            last_hour = last_hour - 1
+            last_hour = last_hour + 1
         return last_hour
 
+    def get_now_min(self):
+        now_time = time.localtime()
+        now_min = now_time.tm_min
+        return now_min
+
     def get_now_second(self):
-        return self.now_second()
+        now_time = time.localtime()
+        now_second = now_time.tm_sec
+        return now_second
+
+    def get_now_time(self):
+        now_time = time.strftime("%H:%M")
+        print(now_time)
+
+    def get_next_time(self):
+        now_time = time.localtime()
+        hour = self.get_next_hour()
+        min = str(now_time.tm_min)
+        if hour >= 0 or hour <= 9:
+            hour = '0' + str(hour)
+        now_time = hour + ':' + min
+        print(now_time)
+        return now_time
+
+
+timer = Timer()
+timer.get_next_time()
 
