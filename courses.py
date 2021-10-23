@@ -14,9 +14,9 @@ class Courses:
         for i in range(1, len(log)):
             course_info = re.findall('".*?","(.*?)",".*?","(.*?)",".*?","(.*?)",".*?","",""\\)', log[i])
             course_time = re.findall('index =(.*?)\\*unitCount\\+(.*?);', log[i])
-            time = ''
+            time = []
             for j in range(len(course_time)):
-                time = time + course_time[j][1] + ','
+                time.append(course_time[j][1])
             course_dict = {
                 '教师': course_info[0][0],
                 '学科名称': course_info[0][1],

@@ -39,9 +39,9 @@ class Timer:
         now_time = time.localtime()
         hour = self.get_next_hour()
         min = time.strftime(":%M")
-        if hour >= 0 or hour <= 9:
+        if hour >= 0 and hour <= 9:
             hour = '0' + str(hour)
-        now_time = hour + min
+        now_time = str(hour) + min
         print(now_time)
         return now_time
 
